@@ -1,51 +1,66 @@
 import styled from 'styled-components';
 
+export const FormCocktails = styled.form`
 
-export const CasosUl = styled.ul`
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 2em;
-    list-style: none;
-    
-    
-    li{
-        background: #fff;
-        padding: 2em;
+    width: 45%;
+    margin: 2em auto;
+    @media (max-width: 600px){
+        width: 80%; 
+    }
+
+    input{
+        width: 100%;
+        height: 3.5em;
+        color: #333;
+        border: 1px solid #dcdce6;
         border-radius: 8px;
-        position: relative;
-        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-        transition: 0.3s;
-        &:hover{
-            transform: scale(1.03);
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
-        }
+        padding: 0 1em;
 
-        strong{
-            display: block;
-            margin-bottom: 1em;
-            color: #41414d;
-        }
+    }
+`;
 
-        p + strong{
-            margin-top: 2.1em;
-        }
+export const WaitingGlasses = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-top: 3em;
 
-        p{
-            color: #737380;
-            line-height: 21px;
-            font-size: 1.1em;
+    svg{
+        width: 150px;
+        height: 150px;
+        @media (max-width: 1300px){
+            width: 100px;
+            height: 100px;
         }
+        @media (max-width: 600px){
+            width: 150px;
+            height: 150px;
+        }
+    }
+    
+`;
 
-        button{
-            position: absolute;
-            right: 1.7em;
-            top: 1.4em;
-            border: 0;
-            background: transparent;
-            color: #a8a8b3;
-            &:hover{
-                color: #e02041;
-            }
-        }
+export const CocktailsUl = styled.ul`
+    width: 45%;
+    margin: 2em auto;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1em;
+`;
+
+export const CocktailsLi = styled.li`
+    cursor: pointer;
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background-image: url(${props => props.backgroundImage});
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    h2{
+        position: absolute;
+        bottom: 0;
+        left: 0;
     }
 `;

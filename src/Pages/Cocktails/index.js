@@ -1,33 +1,72 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import Header from '../../Components/Header';
+import { FormCocktails, WaitingGlasses, CocktailsUl, CocktailsLi } from './style';
+// import { FaGlassMartiniAlt, FaWineGlassAlt, FaGlassWhiskey } from 'react-icons/fa';
+import IconCoqueteleira from "../../Assets/Icons/coqueteleira";
 
-import { CasosUl } from './style';
 
 import Api from '../../Services/Api';
 
+
 export default function Cocktails(){
 
-    const [cocktails, setCocktails] = useState([])
+    const [query, setQuery] = useState('');
+    const [cocktails, setCocktails] = useState([]);
+    const [queryStatus, setQueryStatus] = useState('waiting');
 
-    useEffect( () => {
-        Api.get('/filter.php?c=Cocktail')
-        .then(response => {
-            setCocktails(response.data.drinks);
-        })
-    }, []);
 
+
+    async function handleSubmit(e){
+        e.preventDefault();
+
+        try {
+            await Api.get(`/search.php?s=${query}`)
+            .then(response => {
+                if(response.data.drinks === null){
+                    setQueryStatus('not found');
+                }else{
+                    setCocktails(response.data.drinks);
+                    setQueryStatus('found');
+                }
+            });
+        } catch (error) {
+            console.log(error);
+        }
+        
+    }
+    
+  
     return(
         <>
             <Header />
-            <CasosUl>
-                {cocktails.map(cocktail => (
-                <li key={cocktail.idDrink}>
-                    <strong>cocktail:</strong>
-                    <p>{cocktail.strDrink}</p>
-                </li>
-                ))}
-            </CasosUl>
+
+            <FormCocktails onSubmit={handleSubmit}>
+                <input value={query} onChange={e => setQuery(e.target.value)} placeholder={"Search for a cocktail"}/>
+                <button type="submit">
+                    Search
+                </button>
+                {queryStatus === 'waiting' &&
+                    <WaitingGlasses>
+                        <IconCoqueteleira/>
+                    </WaitingGlasses>
+                }
+                {queryStatus === 'not found' &&
+                    <WaitingGlasses>
+                        <h1>Cocktail not found</h1>
+                    </WaitingGlasses>
+                }
+            </FormCocktails>
+
+            {queryStatus === 'found' && 
+                <CocktailsUl>
+                    {cocktails.map(cocktail => (
+                    <CocktailsLi key={cocktail.idDrink} backgroundImage={`${cocktail.strDrinkThumb}/preview`}>
+                        <h2>{cocktail.strDrink}</h2>
+                    </CocktailsLi>
+                    ))}
+                </CocktailsUl> 
+            }
         </>
     );
 }
