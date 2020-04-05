@@ -1,23 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { BackButton, RecipeWrapper, PrincipalInfo, IngredientsMeasures, DescriptionalInfo } from './style';
-import cocktailImage from '../../Assets/Icons/cocktail.svg'
 
 import { TiArrowLeft } from 'react-icons/ti';
 
 export default function Recipe(props){
     const cocktailData = props.location.state.cocktailData;
-
-    // const [ingredients, setIngredients] = useState([]);
-
-    // let array = [];
-    // for(var i = 1; i <= 15; i++){
-    //     console.log(cocktailData[`strIngredient${i}`])
-    //     array.push(cocktailData[`strIngredient${i}`]);
-        
-    // }
-    // setIngredients(array)
 
     const history = useHistory();
 

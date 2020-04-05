@@ -13,8 +13,8 @@ const SVG = ({
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
   >
-    <g id="Page-1" fill="none" fill-rule="evenodd">
-    <g id="001---Cocktail-Shaker" fill={fill} fill-rule="nonzero">
+    <g id="Page-1" fill="none" >
+    <g id="001---Cocktail-Shaker" fill={fill}>
         <path id="Shape" d="m7 26h-2c-.55228475 0-1 .4477153-1 1s.44771525 1 1 1h2c.55228475 0 1-.4477153 1-1s-.44771525-1-1-1z"/>
         <path id="Shape" d="m19 26h-8c-.5522847 0-1 .4477153-1 1s.4477153 1 1 1h8c.5522847 0 1-.4477153 1-1s-.4477153-1-1-1z"/>
         <path id="Shape" d="m12 4h-1c-.5522847 0-1 .44771525-1 1s.4477153 1 1 1h1c.5522847 0 1-.44771525 1-1s-.4477153-1-1-1z"/>
