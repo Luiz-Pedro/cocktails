@@ -5,10 +5,10 @@ export const Header = styled.header`
     background: transparent ;
     display:flex;
     justify-content: space-between;
-    padding: 1em 3em 0.5em 5em;
+    padding: 1em 6em 0.5em 6em;
     align-items: center;
     @media (max-width: 600px){
-        padding: 1.5em 1em 1.5em 1em;
+        padding: 1.5em 3em 1.5em 1em
     }
 
     a{

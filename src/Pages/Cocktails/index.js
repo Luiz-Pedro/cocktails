@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import Header from '../../Components/Header';
-import { FormCocktails, WaitingGlasses, CocktailsUl, CocktailsLi } from './style';
-// import { FaGlassMartiniAlt, FaWineGlassAlt, FaGlassWhiskey } from 'react-icons/fa';
-import IconCoqueteleira from "../../Assets/Icons/coqueteleira";
+import { FormCocktails, IconFormWrapper, CocktailsUl, CocktailsLi } from './style';
+import { MdSearch } from 'react-icons/md';
+import { TiArrowRight } from 'react-icons/ti';
 
+import imgcocktail from '../../Assets/Icons/party.svg'
+import IconCoqueteleira from "../../Assets/Icons/coqueteleira";
+import IconSad from "../../Assets/Icons/sad";
 
 import Api from '../../Services/Api';
 
@@ -15,7 +19,7 @@ export default function Cocktails(){
     const [cocktails, setCocktails] = useState([]);
     const [queryStatus, setQueryStatus] = useState('waiting');
 
-
+    const history = useHistory();
 
     async function handleSubmit(e){
         e.preventDefault();
@@ -33,7 +37,10 @@ export default function Cocktails(){
         } catch (error) {
             console.log(error);
         }
-        
+    }
+
+    function handleRecipe(cocktailData){
+        history.push(`/recipe:${cocktailData.strDrink}`, { cocktailData });
     }
     
   
@@ -42,27 +49,29 @@ export default function Cocktails(){
             <Header />
 
             <FormCocktails onSubmit={handleSubmit}>
-                <input value={query} onChange={e => setQuery(e.target.value)} placeholder={"Search for a cocktail"}/>
-                <button type="submit">
-                    Search
-                </button>
+                <input value={query} onChange={e => setQuery(e.target.value)} placeholder={"Cocktail name"}/>
+                <button type="submit">Search for recipes <MdSearch size={20}/></button>
+                
                 {queryStatus === 'waiting' &&
-                    <WaitingGlasses>
+                    <IconFormWrapper>
                         <IconCoqueteleira/>
-                    </WaitingGlasses>
+                    </IconFormWrapper>
                 }
                 {queryStatus === 'not found' &&
-                    <WaitingGlasses>
-                        <h1>Cocktail not found</h1>
-                    </WaitingGlasses>
+                    <IconFormWrapper>
+                        <IconSad />
+                        <h2>Cocktail Not Found</h2>
+                    </IconFormWrapper>
                 }
             </FormCocktails>
 
             {queryStatus === 'found' && 
                 <CocktailsUl>
                     {cocktails.map(cocktail => (
-                    <CocktailsLi key={cocktail.idDrink} backgroundImage={`${cocktail.strDrinkThumb}/preview`}>
+                    <CocktailsLi key={cocktail.idDrink} onClick={() => handleRecipe(cocktail)}>
+                        <img src={imgcocktail}/>
                         <h2>{cocktail.strDrink}</h2>
+                        <TiArrowRight size={25}/>
                     </CocktailsLi>
                     ))}
                 </CocktailsUl> 

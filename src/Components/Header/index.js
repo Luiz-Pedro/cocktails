@@ -14,9 +14,6 @@ export default function Home(){
                 <li>
                     <NavLink to="/cocktails" activeClassName="menuClicado">cocktails</NavLink>
                 </li>
-                <li>
-                    <NavLink to="/projetos" activeClassName="menuClicado">ingredients</NavLink>
-                </li>
             </Menus>
         </Header>
     );
