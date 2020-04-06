@@ -40,7 +40,7 @@ export default function Cocktails(){
     }
 
     function handleRecipe(cocktailData){
-        history.push(`/recipe:${cocktailData.strDrink}`, { cocktailData });
+        history.push(`/recipe/${cocktailData.strDrink}`, { cocktailData });
     }
     
   
