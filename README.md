@@ -1,11 +1,11 @@
 
-<img src="https://raw.githubusercontent.com/Luiz-Pedro/cocktails/master/src/assets/title.png" width="auto" height="100"> 
+<img src="https://raw.githubusercontent.com/Luiz-Pedro/cocktails/master/src/Assets/title.png" width="auto" height="100"> 
 
 
 # Just a jun little project.
 
 *Application made to be a huge database for cocktails recipes. Created using the api (thecocktaildb.com)*
-<img src="https://raw.githubusercontent.com/Luiz-Pedro/cocktails/master/src/assets/mockup.png" width="auto" height="400"> 
+<img src="https://raw.githubusercontent.com/Luiz-Pedro/cocktails/master/src/Assets/mockup.png" width="auto" height="400"> 
 
 ## Technologies
 
