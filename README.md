@@ -2,7 +2,7 @@
 <img src="https://raw.githubusercontent.com/Luiz-Pedro/cocktails/master/src/Assets/title.png" width="auto" height="100"> 
 
 
-# Just a jun little project.
+# Just a fun little project.
 
 *Application made to be a huge database for cocktails recipes. Created using the api (thecocktaildb.com)*
 <img src="https://raw.githubusercontent.com/Luiz-Pedro/cocktails/master/src/Assets/mockup.png" width="auto" height="400"> 
@@ -12,8 +12,6 @@
 * ReactJS: Web 
 
 ## Run the project:
-
-* Open the "frontend" folder.
 
 * Install all dependecies before running the project.
 
