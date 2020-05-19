@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const HomeWrapper = styled.section`
     max-height: 100vh;
-    height: 85vh;
+    height: 84vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 0em;
